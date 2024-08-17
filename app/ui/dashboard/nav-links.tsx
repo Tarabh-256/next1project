@@ -1,8 +1,16 @@
+
 import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
+  ClipboardDocumentCheckIcon,
+  // ClipboardDocumentListIcon,
+  // PencilSquareIcon,
+  // CalendarDaysIcon,
+  // BellIcon,
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
@@ -14,6 +22,11 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  {name: 'Mark Attendance', href: '/dashboard/mark-attendance', icon:ClipboardDocumentCheckIcon },
+  // {name: 'Report', href: '/dashboard/report', icon:ClipboardDocumentListIcon  },
+  // {name: 'Todo', href: '/dashboard/todo', icon:PencilSquareIcon},
+  // {name: 'Calender', href: '/dashboard/calender', icon:CalendarDaysIcon},
+  // {name: 'Notification', href: '/dashboard/notification', icon:BellIcon},
 ];
 
 export default function NavLinks() {
@@ -22,14 +35,14 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <a
+          <Link
             key={link.name}
             href={link.href}
             className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
-          </a>
+          </Link>
         );
       })}
     </>
